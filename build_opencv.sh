@@ -36,6 +36,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     ..
 
 
+# Increasing swap from 100MB to 2GB as compilation takes lots of memory
 sudo dphys-swapfile swapoff
 sudo sed -i 's:CONF_SWAPSIZE=.*:CONF_SWAPSIZE=2048:g' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile stop
@@ -47,3 +48,8 @@ make -j "$NUM_JOBS"
 sudo make install
 sudo ldconfig
 
+
+# Reseting swap to 100MB as larger swaps can cause SD-card to corrupt
+sudo sed -i 's:CONF_SWAPSIZE=2048:CONF_SWAPSIZE=100:g' /etc/dphys-swapfile
+sudo /etc/init.d/dphys-swapfile stop
+sudo /etc/init.d/dphys-swapfile start
