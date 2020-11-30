@@ -5,7 +5,7 @@
 
 - ### Clone the repository
 ```
-git clone git@github.com:MayurDeshmukh10/opencv-installation-scripts.git
+git clone https://github.com/MayurDeshmukh10/opencv-installation-scripts.git
 cd opencv-installation-scripts
 sudo chmod +x *.sh
 ```
